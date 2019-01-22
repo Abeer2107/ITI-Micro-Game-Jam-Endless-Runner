@@ -14,6 +14,7 @@ A simple endless runner for a first micro jam
 </p>
 
 <hr>
+
 ## Credits:
 
 ### Art:
