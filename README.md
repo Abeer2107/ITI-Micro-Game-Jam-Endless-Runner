@@ -15,6 +15,7 @@ A simple endless runner for a first micro jam
 
 <hr>
 ## Credits:
+
 ### Art:
 - Character: 
     Hussien Hegazy: https://www.behance.net/hussienhege932?fbclid=IwAR2y7IEePitZ7aUzZMkBfjDX4EQfWt776N31n1e5KLzWLXN7VFM2VER1caY
