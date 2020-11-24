@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -46,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //Sliding (bazrameet!)
+        //Sliding
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             FindObjectOfType<AudioManager>().playSlideSFX();
@@ -54,7 +52,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.DownArrow))
         {
             anim.SetBool(SlideAnimationVar, true);
-            //Change collider size!! ==> Done in Animation :P
         }
         else
         {

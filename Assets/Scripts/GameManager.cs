@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerController player;
-    public UIManager ui;
-    public Spawner obstaclesSpawner;
-    public float speed;
-    public bool isPaused;
+    [SerializeField] PlayerController player;
+    [SerializeField] UIManager ui;
+    [SerializeField] Spawner obstaclesSpawner;
+    [SerializeField] float speed;
+    bool isPaused;
     int score;
-    public Text scoreCounter;
+    [SerializeField] Text scoreCounter;
     float timer = 0;
 
     static GameManager instance = null;

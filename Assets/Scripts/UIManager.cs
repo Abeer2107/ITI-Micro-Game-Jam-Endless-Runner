@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject MainMenuCanvas;
+    [SerializeField] GameObject MainMenuCanvas;
+    [SerializeField] GameObject pauseMenuCanvas;
+    [SerializeField] GameObject gameOverCanvas;
     public bool mainMenuOn;
-    public GameObject pauseMenuCanvas;
-    public GameObject gameOverCanvas;
-
     void Start()
     {
         pauseMenuCanvas.SetActive(false);

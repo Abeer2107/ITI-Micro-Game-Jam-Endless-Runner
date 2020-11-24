@@ -1302,7 +1302,7 @@ PrefabInstance:
     - target: {fileID: 1350129033182740063, guid: 620870270c7ed1f48a608c7ad7220589,
         type: 3}
       propertyPath: spawnTimeMax
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1350129033182740063, guid: 620870270c7ed1f48a608c7ad7220589,
         type: 3}
@@ -1637,8 +1637,7 @@ MonoBehaviour:
   player: {fileID: 2056427316}
   ui: {fileID: 2103652250}
   obstaclesSpawner: {fileID: 408457557}
-  speed: 6
-  isPaused: 0
+  speed: 5
   scoreCounter: {fileID: 837553482}
 --- !u!4 &1571676779
 Transform:
@@ -2820,9 +2819,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainMenuCanvas: {fileID: 1867724050}
-  mainMenuOn: 0
   pauseMenuCanvas: {fileID: 1541515766}
   gameOverCanvas: {fileID: 1714081380}
+  mainMenuOn: 0
 --- !u!4 &2103652251
 Transform:
   m_ObjectHideFlags: 0
