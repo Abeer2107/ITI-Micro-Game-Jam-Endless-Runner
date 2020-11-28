@@ -819,11 +819,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -869,7 +869,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.73
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1223,12 +1223,12 @@ PrefabInstance:
     - target: {fileID: 1350129033182740063, guid: 620870270c7ed1f48a608c7ad7220589,
         type: 3}
       propertyPath: obj.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1350129033182740063, guid: 620870270c7ed1f48a608c7ad7220589,
         type: 3}
       propertyPath: positions.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1350129033182740063, guid: 620870270c7ed1f48a608c7ad7220589,
         type: 3}
@@ -1287,7 +1287,7 @@ PrefabInstance:
     - target: {fileID: 1350129033182740063, guid: 620870270c7ed1f48a608c7ad7220589,
         type: 3}
       propertyPath: positions.Array.data[2].y
-      value: -6
+      value: -5.9
       objectReference: {fileID: 0}
     - target: {fileID: 1350129033182740063, guid: 620870270c7ed1f48a608c7ad7220589,
         type: 3}
@@ -1320,6 +1320,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5167132005326898369, guid: 7ad37cb9c7e08bb4ca565020776dcb67,
         type: 3}
+    - target: {fileID: 1350129033182740063, guid: 620870270c7ed1f48a608c7ad7220589,
+        type: 3}
+      propertyPath: obj.Array.data[5]
+      value: 
+      objectReference: {fileID: 8083962464992436780, guid: e3c4ce3efb710634d99c3778ae8b181e,
+        type: 3}
+    - target: {fileID: 1350129033182740063, guid: 620870270c7ed1f48a608c7ad7220589,
+        type: 3}
+      propertyPath: positions.Array.data[5].x
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350129033182740063, guid: 620870270c7ed1f48a608c7ad7220589,
+        type: 3}
+      propertyPath: positions.Array.data[5].y
+      value: -2.3
+      objectReference: {fileID: 0}
     - target: {fileID: 309013485265717428, guid: 620870270c7ed1f48a608c7ad7220589,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1583,7 +1599,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1541515770
 RectTransform:
@@ -1683,7 +1699,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.096889496, y: -5.547966}
+  m_Offset: {x: 0.096889496, y: -5.6541753}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1694,7 +1710,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 77.68845, y: 1.9108276}
+  m_Size: {x: 77.68845, y: 1.6984091}
   m_EdgeRadius: 0
 --- !u!4 &1620762027
 Transform:
@@ -1861,7 +1877,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1714081384
 RectTransform:
@@ -2039,7 +2055,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1867724054
 RectTransform:
@@ -2913,7 +2929,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &2112296404
 RectTransform:
