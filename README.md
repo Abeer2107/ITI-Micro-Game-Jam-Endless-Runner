@@ -2,7 +2,7 @@
 
 
 <p align="center">A simple endless runner for a first micro jam</p>
-<h2 align="center">https://abeer7.itch.io/castle-run</h2>
+<p align="center">Play it here:</p><h2 align="center">https://abeer7.itch.io/castle-run</h2>
 <hr>
 
 <p align="center">
@@ -20,7 +20,7 @@
 
 ### Art:
 - Character: 
-</br>Hussien Hegazy: https://www.behance.net/hussienhege932?fbclid=IwAR2y7IEePitZ7aUzZMkBfjDX4EQfWt776N31n1e5KLzWLXN7VFM2VER1caY
+</br>Hussien Hegazy: https://www.behance.net/hussein_hegazy
 
 - Environment:
 </br>Rana El-Shafei: https://www.facebook.com/rana.elshafei.1
