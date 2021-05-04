@@ -2,14 +2,14 @@
 
 public class Destroyer : MonoBehaviour
 {
+    public delegate void PlayerOutOfBoundEvent();
+    public static event PlayerOutOfBoundEvent PlayerOutOfBound;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            //Game over
-            FindObjectOfType<GameManager>().gameOver();
-            //Debug.Break();
-            //return;
+            PlayerOutOfBound.Invoke();
         }
 
         if (collision.gameObject.transform.parent)

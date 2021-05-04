@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f89864f6ae5a34e458e49c7f877a6f25
+guid: 0935469b4ad006445b12fb704a2a2e53
 TextureImporter:
   fileIDToRecycleName:
     21300000: slide0001_0
@@ -10,7 +10,7 @@ TextureImporter:
     21300010: slide0001_5
     21300012: slide0001_6
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0

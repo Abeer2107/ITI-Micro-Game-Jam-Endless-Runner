@@ -1,47 +1,93 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] GameObject MainMenuCanvas;
-    [SerializeField] GameObject pauseMenuCanvas;
-    [SerializeField] GameObject gameOverCanvas;
-    public bool mainMenuOn;
-    void Start()
+    [SerializeField] Text scoreText;
+    [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject gameoverMenu;
+
+    string sceneName;
+    bool isStarted = false;
+    bool isPaused = false;
+
+    public delegate void GameStartedEvent();
+    public static event GameStartedEvent GameStarted;
+
+    private void OnEnable()
     {
-        pauseMenuCanvas.SetActive(false);
-        showMainMenu();
+        GameManager.UpdateScore += SetScore;
+        ScrollingObject.PlayerHit += ShowGameOver;
+        Destroyer.PlayerOutOfBound += ShowGameOver;
+    }
+    private void OnDisable()
+    {
+        GameManager.UpdateScore -= SetScore;
+        ScrollingObject.PlayerHit -= ShowGameOver;
+        Destroyer.PlayerOutOfBound -= ShowGameOver;
+    }
+    private void Start()
+    {
+        sceneName = SceneManager.GetActiveScene().name;
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && isStarted)
+        {
+            isPaused = !isPaused;
+
+            if (isPaused)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ResumeGame();
+            }
+        }
     }
 
-    public void showMainMenu()
+    public void StartGame()
     {
-        MainMenuCanvas.gameObject.SetActive(true);
-        mainMenuOn = true;
+        isStarted = true;
+        scoreText.gameObject.SetActive(true);
+        GameStarted.Invoke();
     }
 
-
-    public void hideMainMenu()
+    public void QuitGame()
     {
-        MainMenuCanvas.gameObject.SetActive(false);
-        mainMenuOn = false;
+        Application.Quit(0);
     }
 
-    public void showPauseMenu()
+    public void PauseGame()
     {
-        pauseMenuCanvas.SetActive(true);
+        pauseMenu.SetActive(true);
+        isPaused = true;
+        Time.timeScale = 0;
     }
 
-    public void hidePauseMenu()
+    public void ResumeGame()
     {
-        pauseMenuCanvas.SetActive(false);
-    }
-    
-    public void showGameOverMenu()
-    {
-        gameOverCanvas.SetActive(true);
+        pauseMenu.SetActive(false);
+        isPaused = false;
+        Time.timeScale = 1;
     }
 
-    public void hideGameOverMenu()
+    public void ShowGameOver()
     {
-        gameOverCanvas.SetActive(false);
+        gameoverMenu.SetActive(true);
+        isStarted = false;
+        Time.timeScale = 0;
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    void SetScore(int score)
+    {
+        scoreText.text = score.ToString();
     }
 }

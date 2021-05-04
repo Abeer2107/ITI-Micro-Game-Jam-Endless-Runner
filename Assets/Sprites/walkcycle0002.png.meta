@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f3d3f21c1c8efd4cba9042fc2edc60b
+guid: c52244c7098bf4945a3e46b39522c644
 TextureImporter:
   fileIDToRecycleName:
     21300000: walkcycle0002_0
@@ -106,7 +106,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f91eafdfafe4044686a65f7bec0aff1
+      spriteID: 8d5595e26cffe01438b611c8efce7d2f
       vertices: []
       indices: 
       edges: []
@@ -126,7 +126,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edeb2b76300b9f24396930525c417bb0
+      spriteID: 294dd93d8c5eb554bb6f76a666861e02
       vertices: []
       indices: 
       edges: []
@@ -146,7 +146,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c0318c3d26d8794fa1258c498e9e300
+      spriteID: deac91e9169a07d4fb2f80c7c0f72cad
       vertices: []
       indices: 
       edges: []
@@ -166,7 +166,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85bf0171785c87a40a5c4c72a6a1b2a0
+      spriteID: 369ff01b96c2ee646b2d3b0e7c232637
       vertices: []
       indices: 
       edges: []
@@ -186,7 +186,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf62db8830263fe40af76719904fd031
+      spriteID: 3b54195dcb9ce6a4dbc34be9439b5cdd
       vertices: []
       indices: 
       edges: []
@@ -206,7 +206,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b261b9b48493434a9630ed4c673f493
+      spriteID: 26e14df30af72e84090dc7b0f9103181
       vertices: []
       indices: 
       edges: []
@@ -226,7 +226,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9254a02f46b0a348b99298669eebbe1
+      spriteID: d836c026c257c4a4d8f30dd0e622f96e
       vertices: []
       indices: 
       edges: []
@@ -246,7 +246,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04d7ff4161046cb4e846209caba7c352
+      spriteID: 2f4011c91bdc7664ead12f47bb8b81a7
       vertices: []
       indices: 
       edges: []

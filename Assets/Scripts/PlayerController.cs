@@ -1,61 +1,76 @@
 ﻿using UnityEngine;
-
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    public string GroundedAnimationVar;
-    public string SlideAnimationVar;
-
-    bool isGrounded = false;
-    public float jumpForce;
-    public float fallForce;
-    bool doubleJump = false;
-    public Transform groundChecker;
-    public float groundRadius;
-    public LayerMask whatIsGround;
+    [Header("Animation Settings")]
+    [SerializeField] string GroundedAnimationVar;
+    [SerializeField] string SlideAnimationVar;
+    [Header("Player Settings")]
+    [SerializeField] float jumpForce;
+    [SerializeField] float fallForce;
+    [SerializeField] Transform groundChecker;
+    [SerializeField] float groundRadius;
+    [SerializeField] LayerMask whatIsGround;
+    [SerializeField] bool canDoubleJump = true;
+    [Header("SFX")]
+    [SerializeField] AudioClip slideClip;
+    [SerializeField] AudioClip jumpClip;
+    [SerializeField] AudioClip hitClip;
 
     Rigidbody2D rigBody;
-    Animator anim;
+    Animator animator;
+    AudioSource audioSource;
     Vector3 initPos;
+    bool isGrounded = false;
+    bool doubleJump = false;
 
-    private void Awake()
+    private void OnEnable()
     {
-        this.rigBody = GetComponent<Rigidbody2D>();
-        this.anim = GetComponent<Animator>();
+        ScrollingObject.PlayerHit += TakeHit;
+    }
+    private void OnDisable()
+    {
+        ScrollingObject.PlayerHit -= TakeHit;
     }
 
     private void Start()
     {
+        rigBody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         initPos = transform.position;
     }
 
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundRadius, whatIsGround);
-        anim.SetBool(GroundedAnimationVar, isGrounded);
+        if(animator) animator.SetBool(GroundedAnimationVar, isGrounded);
 
+        //Return to initial position if pushed back
         if(transform.position.x < initPos.x)
         {
             rigBody.velocity = new Vector2(1f, rigBody.velocity.y);
         }
-        else
+        else { 
             rigBody.velocity = new Vector2(0, rigBody.velocity.y);
-
+        }
     }
 
     private void Update()
     {
         //Sliding
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) && audioSource)
         {
-            FindObjectOfType<AudioManager>().playSlideSFX();
+            audioSource.clip = slideClip;
+            audioSource.Play();
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            anim.SetBool(SlideAnimationVar, true);
+           if(animator) animator.SetBool(SlideAnimationVar, true);
         }
         else
         {
-            anim.SetBool(SlideAnimationVar, false);
+           if(animator) animator.SetBool(SlideAnimationVar, false);
         }
 
         //Jumping
@@ -64,14 +79,17 @@ public class PlayerController : MonoBehaviour
             if (isGrounded)
             {
                 rigBody.velocity = new Vector2(rigBody.velocity.x, jumpForce);
-                doubleJump = true;
-                FindObjectOfType<AudioManager>().playJumpSFX();
+                if(canDoubleJump) doubleJump = true;
             }
             else if (doubleJump)
             {
                 rigBody.velocity = new Vector2(rigBody.velocity.x, jumpForce);
                 doubleJump = false;
-                FindObjectOfType<AudioManager>().playJumpSFX();
+            }
+            if (audioSource)
+            {
+                audioSource.clip = jumpClip;
+                audioSource.Play();
             }
         }
 
@@ -79,6 +97,15 @@ public class PlayerController : MonoBehaviour
         if (rigBody.velocity.y < 0)
         {
             rigBody.velocity = new Vector2(rigBody.velocity.x, rigBody.velocity.y - (jumpForce * fallForce));
+        }
+    }
+
+    void TakeHit()
+    {
+        if (audioSource)
+        {
+            audioSource.clip = hitClip;
+            audioSource.Play();
         }
     }
 

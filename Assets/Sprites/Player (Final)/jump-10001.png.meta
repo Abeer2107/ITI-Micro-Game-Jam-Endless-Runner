@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e2c2ae23a131f0949b3447840d5e9715
+guid: c887e91ec0678f8448318907d61f788e
 TextureImporter:
   fileIDToRecycleName:
     21300000: jump-10001_0
@@ -16,7 +16,7 @@ TextureImporter:
     21300022: jump-10001_11
     21300024: jump-10001_12
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0

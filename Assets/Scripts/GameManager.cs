@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] PlayerController player;
-    [SerializeField] UIManager ui;
-    [SerializeField] Spawner obstaclesSpawner;
-    [SerializeField] float speed;
-    bool isPaused;
+    [SerializeField] float levelSpeed;
     int score;
-    [SerializeField] Text scoreCounter;
     float timer = 0;
 
-    static GameManager instance = null;
+    public delegate void UpdateScoreEvent(int score);
+    public delegate void UpdateDifficultyEvent(float levelSpeed);
 
+    public static event UpdateScoreEvent UpdateScore;
+    public static event UpdateDifficultyEvent UpdateDifficulty;
+
+
+    static GameManager instance = null;
     private void Awake()
     {
         if (!instance)
@@ -23,65 +23,41 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-
             Destroy(instance.gameObject);
             instance = this;
         }
     }
 
+    private void OnEnable()
+    {
+        UIManager.GameStarted += StartGame;
+    }
+    private void OnDisable()
+    {
+        UIManager.GameStarted -= StartGame;
+    }
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        ui.showMainMenu();
-        player.gameObject.SetActive(false);
-        FindObjectOfType<AudioManager>().playMainMenu();
-        Time.timeScale = 0;  
-        for(int i = 0; i < obstaclesSpawner.obj.Length; i++)
-        {
-            obstaclesSpawner.obj[i].GetComponent<Obstacles>().speed = this.speed;
-        }
-    }
-
-    public void startGame()
-    {
-        score = 0;
-        //obstaclesSpawner.gameObject.SetActive(true);
-        FindObjectOfType<AudioManager>().playGameplay();
-        Time.timeScale = 1;
-        player.gameObject.SetActive(true);
-        ui.hideMainMenu();
-        resumeGame();
-    }
-
-    public void pauseGame()
-    {
         Time.timeScale = 0;
-        isPaused = true;
+
+        player.gameObject.SetActive(false);
+        UpdateDifficulty.Invoke(levelSpeed);
     }
 
-    public void resumeGame()
+    public void StartGame()
     {
         Time.timeScale = 1;
-        isPaused = false;
+        score = 0;
+        player.gameObject.SetActive(true);
     }
 
     public void gameOver()
     {
         Time.timeScale = 0;
-        ui.showGameOverMenu();
-        //obstaclesSpawner.gameObject.SetActive(false);
     }
 
-    public void reloadScene()
-    {
-        SceneManager.LoadScene("Game");
-    }
-
-    public void quitGame()
-    {
-        Application.Quit(0);
-    }
 
     void Update()
     {
@@ -89,19 +65,8 @@ public class GameManager : MonoBehaviour
         if(timer >= 1)
         {
             score++;
-            scoreCounter.text = score.ToString();
+            UpdateScore.Invoke(score);
             timer = 0;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && ui.mainMenuOn == false)
-        {
-            ui.showPauseMenu();
-            pauseGame();
-        }
-        else if (isPaused && Input.GetKeyDown(KeyCode.Escape))
-        {
-            ui.hidePauseMenu();
-            resumeGame();
         }
 
         //if(this.score % 50 == 0)

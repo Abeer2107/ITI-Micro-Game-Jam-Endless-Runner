@@ -2,10 +2,10 @@
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject[] obj;
-    public Vector3[] positions;
-    public float spawnTimeMin = 1f;
-    public float spawnTimeMax = 2f;
+    [SerializeField] float spawnTimeMin = 1f;
+    [SerializeField] float spawnTimeMax = 2f;
+    [SerializeField] GameObject[] obj;
+    [SerializeField] Transform[] spawnPosition;
 
     int randObjIndex;
     void OnEnable()
@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
     void spawn()
     {
         randObjIndex = Random.Range(0, obj.Length);
-        Instantiate(obj[randObjIndex], positions[randObjIndex], Quaternion.identity);
+        Instantiate(obj[randObjIndex], spawnPosition[randObjIndex].position, Quaternion.identity);
         Invoke("spawn", Random.Range(spawnTimeMin, spawnTimeMax));
     }
 }

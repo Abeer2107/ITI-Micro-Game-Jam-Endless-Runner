@@ -4,54 +4,48 @@
 public class AudioManager : MonoBehaviour
 {
     //Clips
-    public AudioClip MainMenuClip, GameplayClip, SlideClip, JumpClip, HitClip;
+    [SerializeField] AudioClip MainMenuClip;
+    [SerializeField] AudioClip GameplayClip;
 
-    void Awake()
+    private void OnEnable()
     {
-        DontDestroyOnLoad(gameObject);
+        UIManager.GameStarted += PlayGameplay;
+    }
+    private void OnDisable()
+    {
+        UIManager.GameStarted -= PlayGameplay;
     }
 
-    public void playMainMenu()
+    static AudioManager instance = null;
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+        }
+    }
+
+    void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+        PlayMainMenu();
+    }
+
+    public void PlayMainMenu()
     { //Main music
         GetComponent<AudioSource>().clip = MainMenuClip;
         GetComponent<AudioSource>().Play();
     }
 
-    public void playGameplay()
+    public void PlayGameplay()
     { //gameplay music
         GetComponent<AudioSource>().clip = GameplayClip;
         GetComponent<AudioSource>().Play();
     }
 
-    public void toggleMusic()
-    {
-        if (GetComponent<AudioSource>().isPlaying)
-            GetComponent<AudioSource>().Pause();
-        else
-            GetComponent<AudioSource>().Play();
-    }
-
-    public void playSlideSFX()
-    {
-        AudioSource s = gameObject.AddComponent<AudioSource>();
-        s.clip = SlideClip;
-        s.Play();
-        Destroy(s, SlideClip.length);
-    }
-
-    public void playJumpSFX()
-    {
-        AudioSource s = gameObject.AddComponent<AudioSource>();
-        s.clip = JumpClip;
-        s.Play();
-        Destroy(s, JumpClip.length);
-    }
-
-    public void playHitSFX()
-    {
-        AudioSource s = gameObject.AddComponent<AudioSource>();
-        s.clip = HitClip;
-        s.Play();
-        Destroy(s, HitClip.length);
-    }
 }
